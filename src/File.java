@@ -1,4 +1,4 @@
-public class File {
+public class File implements Comparable<File>{
     String fileName, fileType;
 
     public String getFileName() {
@@ -31,5 +31,14 @@ public class File {
     @Override
     public String toString() {
         return "File { fileName='" + fileName + "', fileType='" + fileType + "' }";
+    }
+
+    @Override
+    public int compareTo(File otherFile){
+        int nameResault = this.fileName.compareTo(otherFile.fileName);
+        if(nameResault != 0){
+            return nameResault;
+        }
+        return this.fileType.compareTo(otherFile.fileType);
     }
 }
