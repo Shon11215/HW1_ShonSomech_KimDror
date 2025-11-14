@@ -7,8 +7,8 @@ public class BoardMessage extends Message {
         this.priority = priority;
     }
 
-    public BoardMessage(Date senDate, String sender, String content, PriorityType priority) {
-        super(senDate, sender, content);
+    public BoardMessage(Date senDate, String sender, String content, PriorityType priority,String major) {
+        super(senDate, sender, content,major);
         setPriority(priority);
     }
 

@@ -12,8 +12,8 @@ public class EmailMessage extends Message implements IDigital {
         this.subject = subject;
     }
 
-    public EmailMessage(Date senDate, String sender, String content, String subject) {
-        super(senDate, sender, content);
+    public EmailMessage(Date senDate, String sender, String content, String major,String subject) {
+        super(senDate, sender, content,major);
         fileList = new ArrayList<>();
         setSubject(subject);
     }
@@ -28,12 +28,17 @@ public class EmailMessage extends Message implements IDigital {
         fileList.add(file);
     }
 
-    public void removeAttachment(File file) {
+    public void removeAttachment(File file) throws AttachmentException{
+        boolean found = false;
         for (int i = 0; i < fileList.size(); i++) {
             if (fileList.get(i).equals(file)) {
                 fileList.remove(file);
                 i--;
+                found = true;
             }
+        }
+        if (!found){
+            throw new AttachmentException("file not found: "+ file.toString());
         }
     }
 
