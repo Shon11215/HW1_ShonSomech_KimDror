@@ -3,19 +3,16 @@ import java.util.Date;
 
 public abstract class Message {
     Date sendDate;
-    String content, sender;
+    String content, sender,major;
 
     // צריך להוסיף שדה נוסף לבחירתנו מתודה נוספת 
-    public Date getSendDate() {
-        return sendDate;
+
+    public void setMajor(String major){
+        this.major=major;
     }
 
     public void setSendDate(Date sendDate) {
         this.sendDate = sendDate;
-    }
-
-    public String getContent() {
-        return content;
     }
 
     public void setContent(String content) {
@@ -25,10 +22,6 @@ public abstract class Message {
         this.content = content;
     }
 
-    public String getSender() {
-        return sender;
-    }
-
     public void setSender(String sender) {
         if (sender == null) {
             throw new IllegalArgumentException("The sender must contain at least one character.");
@@ -36,10 +29,11 @@ public abstract class Message {
         this.sender = sender;
     }
 
-    public Message(Date senDate, String sender, String content) {
+    public Message(Date senDate, String sender, String content,String major) {
         setContent(content);
         setSendDate(senDate);
         setSender(sender);
+        setMajor(major);
     }
 
     public Message(String sender, String content) {
@@ -62,7 +56,7 @@ public abstract class Message {
     @Override
     public String toString() {
         return "Message {" + "sendDate=" + sendDate + ", sender='" + sender + '\'' +
-                ", content='" + content + '\'' +
+                ", content='" + content + '\'' + ", major='" + major + '\'' +
                 '}';
     }
 }
