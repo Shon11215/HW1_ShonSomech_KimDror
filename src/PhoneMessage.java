@@ -4,11 +4,15 @@ public class PhoneMessage extends Message implements IDigital {
     String phoneNumber;
 
     public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber.length() < 9) {
+            throw new IllegalArgumentException("The phone number must be 10 characters");
+
+        }
         this.phoneNumber = phoneNumber;
     }
 
-    public PhoneMessage(Date senDate, String sender, String content,String major , String phoneNumber) {
-        super(senDate, sender, content,major);
+    public PhoneMessage(Date senDate, String sender, String content, String major, String phoneNumber) {
+        super(senDate, sender, content, major);
         setPhoneNumber(phoneNumber);
 
     }
@@ -25,7 +29,7 @@ public class PhoneMessage extends Message implements IDigital {
 
     @Override
     public String GeneratePreview() {
-        if (content.length() <= 15) {
+        if (GetContentLength() <= 15) {
             return "Subject: " + phoneNumber + "From: " + sender + " " + content;
         }
         return "Subject: " + phoneNumber + "From: " + sender + " " + content.substring(0, 15);

@@ -31,8 +31,8 @@ public class EmailMessage extends Message implements IDigital {
     public void removeAttachment(File file) throws AttachmentException{
         boolean found = false;
         for (int i = 0; i < fileList.size(); i++) {
-            if (fileList.get(i).equals(file)) {
-                fileList.remove(file);
+            if (fileList.get(i).compareTo(file) == 0) {
+                fileList.remove(i);
                 i--;
                 found = true;
             }
@@ -49,7 +49,7 @@ public class EmailMessage extends Message implements IDigital {
 
     @Override
     public String GeneratePreview() {
-        if (content.length() <= 15) {
+        if (GetContentLength() <= 15) {
             return "Subject: " + subject + "From:[Email] " + sender + " " + content; // לחזור לבדוק האם ככה
         }
         return "Subject: " + subject + "From:[Email] " + sender + " " + content.substring(0, 15);
@@ -58,6 +58,12 @@ public class EmailMessage extends Message implements IDigital {
     @Override
     public String toString() {
         return super.toString() + ", subject='" + subject + "'";
+    }
+
+    public void ShowFiles(){
+        for(File file : fileList){
+            System.out.println(file.fileName + " "+ file.fileType);
+        }
     }
 
 }

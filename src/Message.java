@@ -5,7 +5,6 @@ public abstract class Message {
     Date sendDate;
     String content, sender,major;
 
-    // צריך להוסיף שדה נוסף לבחירתנו מתודה נוספת 
 
     public void setMajor(String major){
         this.major=major;
@@ -16,14 +15,14 @@ public abstract class Message {
     }
 
     public void setContent(String content) {
-        if (content == null) {
+        if (content == null || content.equals("")) {
             throw new IllegalArgumentException("The content must contain at least one character.");
         }
         this.content = content;
     }
 
     public void setSender(String sender) {
-        if (sender == null) {
+        if (sender == null || sender.equals("")) {
             throw new IllegalArgumentException("The sender must contain at least one character.");
         }
         this.sender = sender;
@@ -43,6 +42,11 @@ public abstract class Message {
 
     public abstract String GeneratePreview();
     
+
+    //our function
+    public int GetContentLength(){
+        return content.length();
+    }
 
     Boolean Find(ArrayList<String> wordList) {
         for (String word : wordList) {

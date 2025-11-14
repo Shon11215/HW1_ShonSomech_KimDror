@@ -7,8 +7,8 @@ public class BoardMessage extends Message {
         this.priority = priority;
     }
 
-    public BoardMessage(Date senDate, String sender, String content, PriorityType priority,String major) {
-        super(senDate, sender, content,major);
+    public BoardMessage(Date senDate, String sender, String content, PriorityType priority, String major) {
+        super(senDate, sender, content, major);
         setPriority(priority);
     }
 
@@ -18,11 +18,16 @@ public class BoardMessage extends Message {
     }
 
     @Override
-    public String GeneratePreview(){
-         if (content.length() <= 15) {
+    public String GeneratePreview() {
+        if (GetContentLength() <= 15) {
             return sender + " " + content;
-         }
-            return sender + " " + content.substring(0,15);
+        }
+        return sender + " " + content.substring(0, 15);
+    }
+
+    //our function
+    public boolean isUrgent() {
+        return priority == PriorityType.SUPER_URGENT || priority == PriorityType.URGENT;
     }
 
     @Override

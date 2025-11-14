@@ -1,3 +1,3 @@
 public enum PriorityType {
-    REGULAR,URGENT
+    REGULAR,URGENT,SUPER_URGENT
 }
