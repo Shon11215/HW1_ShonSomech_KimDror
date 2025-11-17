@@ -50,8 +50,7 @@ public class EmailMessage extends Message implements IDigital {
     @Override
     public String GeneratePreview() {
         if (GetContentLength() <= 15) {
-            return "Subject: " + subject + "From:[Email] " + sender + " " + content; // לחזור לבדוק האם ככה
-        }
+            return "Subject: " + subject + "From:[Email] " + sender + " " + content;
         return "Subject: " + subject + "From:[Email] " + sender + " " + content.substring(0, 15);
     }
 

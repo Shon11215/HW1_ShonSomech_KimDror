@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
-//add board מה שאנחנו רוצים
 
 public class Main {
     public static void main(String[] args) {
@@ -49,6 +48,9 @@ public class Main {
                             }
                             break;
                         case 2:
+                            System.out.print("Enter location name: ");
+                            String location = sc.nextLine();
+
                             System.out.print("Enter sender name: ");
                             String boardSender = sc.nextLine();
 
@@ -76,7 +78,7 @@ public class Main {
                             String major = sc.nextLine();
                             try {
                                 BoardMessage boardMsg = new BoardMessage(new Date(), boardSender, boardContent,
-                                        priority, major);
+                                        priority, major, location);
                                 messages.add(boardMsg);
                             } catch (IllegalArgumentException e) {
                                 System.out.println(e);
@@ -241,13 +243,3 @@ public class Main {
 
     }
 }
-
-/*
- * צריך להוסיף
- * מיין
- * לסיים את האימייל ולהוסיף שם את מחלקת שגיאה ולשנות ולהוסיף את REMOVE
- * לעבור על ההערות שהשארנו בקוד
- * 
- * 
- * 
- */
